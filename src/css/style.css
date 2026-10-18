@@ -1,0 +1,431 @@
+/* Hasta abajo estan las activaciones de las animaciones */
+
+
+/* ---------------------- Variables ---------------------- */
+:root{
+  --papel: #f6f0e7;       /* fondo cálido */
+  --noche: #142030;       /* texto y botones oscuros */
+  --tinta: #2548b8;       /* azul de acento */
+  --berenjena: #732553;   /* morado oscuro de acento */
+  --fresa: #ff5c8d;       /* rosa vivo (solo en detalles y botón principal) */
+  --gris: #4a5666;        /* texto secundario */
+
+  --fuente: 'Bricolage Grotesque', system-ui, sans-serif;
+  --fuente-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Variables de booststrap-usan nuestros colores */
+  --bs-body-font-family: var(--fuente);
+  --bs-body-color: var(--noche);
+  --bs-body-bg: var(--papel);
+}
+
+
+/* ------------------------ base -------------------------*/
+html { scroll-behavior: smooth; } /* Desplazamiento de la pagina mas suave*/
+
+body {
+  background-color: var(--papel);
+  background-image: radial-gradient(rgba(20, 32, 48, 0.14) 1px, transparent 1.2px);
+  background-size: 26px 26px;
+  color: var(--noche);
+  font-family: var(--fuente);
+  overflow-x: hidden;  /*Evita que que la pagina se desplace a los lados*/
+}
+
+.fondo-luces {    /* Luces de colores fijas detrás del contenido */
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 88% 6%, rgba(37, 72, 184, 0.20), transparent 38%),
+    radial-gradient(circle at 4% 60%, rgba(255, 92, 141, 0.16), transparent 36%);
+}
+
+/* Evita que el menú fijo tape los títulos al navegar con los enlaces */
+section { scroll-margin-top: 110px; }
+.container { padding-inline: 16px; }
+
+
+/*---------------- Piezas reutilizables ------------------------*/
+
+.vidrio {
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 40px rgba(20, 32, 48, 0.08);
+}
+
+.etiqueta {
+  font-family: var(--fuente-mono);
+  font-size: 1rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--berenjena);
+  margin-top: 3rem;;
+  margin-bottom: 1.5rem;
+}
+
+.texto-suave { color: var(--gris); }
+
+.texto-degradado {
+  background: linear-gradient(90deg, var(--tinta), var(--berenjena) 55%, var(--fresa));
+  background-clip: text;
+  color: transparent;
+}
+
+.titulo-seccion {
+  /*el tamaño de la letra se adapta al tamaño de la pantalla | clamp(min / ideal / max)*/
+  font-size: clamp(2rem, 5vw, 3.25rem); 
+  font-weight: 700;
+  letter-spacing: -0.035rem;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.seccion { padding-block: 5rem; }
+
+
+/* ------------------------ Botones --------------------------------------- */ 
+.btn { font-weight: 600; transition: transform 0.2s, opacity 0.2s;}
+.btn:hover { transform: translaterY(-2px);}
+
+.btn-noche  { background: var(--noche); color: var(--papel); border: 0; }
+.btn-noche:hover { background: var(--noche); color: var(--papel); opacity: 0.85; }
+
+.btn-fresa  { background: var(--fresa); color: var(--noche); border: 0; }
+.btn-fresa:hover { background: var(--fresa); color: var(--noche); opacity: 0.9; }
+
+.btn-vidrio {
+  background:  rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px); /*efecto grafico -desenfoque, brillo, contraste */
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  color: var(--noche);
+}
+
+.btn-vidrio:hover { 
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--noche);
+}
+
+/* checar para que sirve */ 
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--tinta);
+  outline-offset: 3px;
+}
+
+
+/* -----------------------  menu ----------------------------------*/
+.barra {
+  border-radius: 1000px;          /* forma de píldora */
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  transition: box-shadow 1s;
+}
+/* se oscurece cuando le bajar */
+.barra.con-sombra { box-shadow: 0 14px 40px rgba(20, 32, 48, 0.20); }
+
+.logo { font-weight: 700; letter-spacing: 0.05em; }
+
+.barra .nav-link { color: var(--gris); font-size: 0.9rem; }
+.barra .nav-link:hover,
+.barra .nav-link.active { color: var(--noche); font-weight: 600; }
+
+/* En celular el menú se abre hacia abajo: quitamos la forma de píldora */
+@media (max-width: 991.98px) {
+  .barra { border-radius: 28px; padding-left: 1.25rem; }
+  .barra .navbar-collapse { padding: 0.75rem 0.5rem 1rem; }
+  .barra .btn-noche { margin-top: 0.5rem; }
+}
+
+
+/* -------------------- INICIO (hero) ------------------------------- */
+.hero {
+  padding-block: 3rem 2rem;
+  overflow-x: clip;
+}
+
+.estado{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.punto {
+  display: inline-block;
+  width: 8px; 
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fresa);
+  animation: latido 2.6s ease-in-out infinite;
+}
+
+.titulo-hero {
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  margin-bottom: 1.5rem;
+}
+
+.hero .lead { 
+  max-width: 30rem; 
+  font-size: 1.1rem; 
+  margin-bottom: 2rem; 
+}
+
+/* Zona de la derecha: ADN detrás y foto delante */
+.hero-visual {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adn {
+  position: absolute;
+  height: 125%;
+  width: auto;
+  right: -10%;
+  top: -12%;
+  z-index: 0;
+  opacity: 0.9;
+  /* Desvanece arriba y abajo para que no se vea cortado */
+  mask-image: linear-gradient(180deg, transparent, #000 14%, #000 86%, transparent);
+  animation: balanceo 20s ease-in-out infinite;
+}
+
+/* Marco de vidrio de la foto */
+
+.foto-marco {
+  position: relative;
+  z-index: 1;
+  width: min(3000px 80%);
+  aspect-ratio: 4 / 5;
+  margin: 0; 
+  padding: 12px;
+  border-radius: 34px;
+  animation: flotar 9s ease-in-out infinite;
+}
+.foto-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  display: block;
+}
+/* Borrar foto-vacia | foto-vacia small */
+.foto-vacia {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  border: 1.5px dashed rgba(20, 32, 48, 0.35);
+  background: rgba(246, 240, 231, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  text-align: center;
+}
+
+.foto-vacia small { font-family: var(--fuente-mono); font-size: 0.6rem; color: var(--gris); }
+
+.chip-flotante {
+  position: absolute;
+  z-index: 2;  /*queda en posicion 2, del adn, que esta sobrepuesto */
+  left: 0;
+  bottom: 12%;
+  padding: 0.6rem 1.1rem;
+  border-radius: 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  animation: flotar 9s ease-in-out infinite reverse;
+}
+
+/*La media son reglas que solo se aplican en ciertos tamaños de pantalla */
+@media(max-width: 991.98px){   /*max-width aplica en pantallas chica*/
+  .hero-visual {min-height: 440px; } /* min-height aplica en pantallas grandes */
+  .adn { right: 0; }
+}
+
+
+/*----------------------------- habilidades -----------------------------*/
+.habilidades{ 
+  padding-block: 2rem 1rem;  /* abreviatura de poner top y bottom */ 
+}
+
+.cinta{
+  overflow: hiden;
+  margin-top: 0.75rem;
+  /* Crea el efecto de desvanecimeinto al crear la cinta, con linear gradiente que empieza y termina en transparente*/
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.cinta-pista{
+  display: flex;
+  width: max-content;
+  animation: cinta 30s linear infinite;
+}
+.cinta:hover .cinta-pista { animation-play-state: paused; }  /* se detiene al pasar el cursor */
+
+.cinta-grupo {
+  display: flex;
+  gap: 16px;
+  padding: 0 16px 0; 
+  margin: 0;
+  /* controlar como se enogen los elementos cuando no hay suficiente espacio, pero en este caso no se encogn porque es 0*/
+  flex-shrink: 0;
+}
+
+.chip{
+  white-space: nowrap;  /* propiedad de otro framework, pero dice: Prohibido hacer saltos de línea automáticos*/
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(20, 32, 48, 0.14)
+}
+
+.chip-oscuro { background: var(--noche); color: var(--papel); border-color: var(--noche); }
+.chip-azul { background: var(--tinta); border-color: rgba(26, 59, 165, 0.45); color: var(--papel) }
+
+
+/* -------------- proyectos ----------------------- */
+
+/* pestañas de vidrio que filtran tarjetas*/
+.filtros{
+  display: inline-flex;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 999px;
+}
+.filtro{
+  border: 0;
+  background: transparent;
+  color: var(--gris);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+.filtro:hover { color: var(--noche); }
+.filtro.activo { background: var(--noche); color: var(--papel); }
+
+/*tarjeta de proyecto */
+.tarjeta {
+  border-radius: 20px;
+  overflow: visible;   /*deja que la cinta sobresalga*/
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.tarjeta:hover { transform: translateY(-10px); box-shadow: 0 24px 60px rgba (37, 72, 184, 0.16); }
+
+.tarjeta-imagen {
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tarjeta-imagen img {
+  width: 250px;
+  max-width: 90%;
+  margin-top: -50px;
+  animation: flotar 9s ease-in-out infinite;
+}
+.cambio-color { filter: hue-rotate(-50deg) saturate(1.15); }
+
+.tarjeta-cuerpo { padding: 0 1.75rem 1.75rem; display: flex; flex-direction: column; flex: 1; }
+.tarjeta-cuerpo h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02rem; }
+.tarjeta-cuerpo .texto-suave { flex: 1; } /* empuja las etiquetas hacia abajo para alinear*/
+
+.etiqueta-tec { 
+  font-size: 0.78rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(20, 32, 48, 0.09);
+}
+
+.enlace-flecha { font-weight: 700; color: var(--noche); text-decoration: none; }
+.enlace-flecha:hover { color: var(--tinta); }
+
+
+/* ------------ sobre mi  ------------------------------*/
+.idea { margin-bottom: 2.25rem; }
+.idea h3 { 
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  letter-spacing: -0.02em; 
+}
+
+/* En pantallas grandes, las ideas "bajas" crean el zigzag del diseño */
+@media (min-width: 992px) {
+  .idea-baja { margin-left: 2.5rem; }
+}
+
+.cinta-central {
+  width: min(380px, 100%);
+  animation: flotar 12s ease-in-out infinite;
+}
+.frase-central {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+
+/*--------------- contactos y pie ----------------------------*/
+.contacto {
+  border-radius: 36px;
+  padding: clamp(1.75rem, 5vw, 3.5rem);
+}
+.datos dt {
+  font-family: var(--fuente-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gris);
+  font-weight: 400;
+}
+.datos dd { 
+  margin: 0.2rem 0 0; 
+  font-weight: 600; 
+  overflow-wrap: anywhere; 
+}
+.pie { 
+  padding-block: 1.5rem 2.5rem; 
+  font-size: 0.8rem; 
+  text-align: center;
+  color: var(--gris); 
+}
+
+
+
+/* ---------- animaciones ------------------------------ */
+@keyframes flotar   { 0%, 100% { transform: translateY(0); }  50% { transform: translateY(-10px); } }
+@keyframes latido   { 0%, 100% { opacity: 1; }                50% { opacity: 0.35; } }
+@keyframes balanceo { 0%, 100% { transform: rotate(8deg) translateY(0); } 50% { transform: rotate(11deg) translateY(-12px); } }
+@keyframes cinta    { from { transform: translateX(0); }      to { transform: translateX(-50%); } }
+@keyframes entrar   { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* El texto del inicio aparece suavemente al cargar la página */
+.entrada { animation: entrar 0.8s ease-out both; }
+
+
+/* ---------- activar o desactivar las animaciones ---------- */
+/* Si la persona pidió "reducir movimiento" en su dispositivo, quitamos las animaciones */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  .cinta { overflow-x: auto; }
+}

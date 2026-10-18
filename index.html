@@ -1,13 +1,285 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portafolio-web</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi portafolio | DMA</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+
+<body>
+    <!------Luces de colores del fondo (solo decoracion) -------->
+    <div class="fondo-luces" aria-hidden="true"> </div>
+
+    <!------ Menu navbar con efecto glass ------>
+    <header class="sticky-top  pt-3">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg barra vidrio">
+                <a class="navbar-brand logo" href="#inicio">Daniela Magaña</a>
+
+                <!--Boton, solo se vera en el celular-->
+                <button class="navbar-toggler border-0" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#menu"
+                    arial-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+                    <span class="navbar-toggler-icon"></span></nav>
+                </button>
+                <!-- Este es mi panel de navegacion -->
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav mx-lg-auto gap-lg-2">
+                        <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sobre mi">Sobre mi</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    </ul>
+                    <!-- Esta ser la ruta de mi cv -->
+                     <a class="btn btn-noche rounded-pill px-4" href="#" download>Descargar CV</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!----------- inicio: titulo, botones y foto (HERO) ------------>
+        <section id="inicio" class="hero">
+            <div class="container">
+                <div class="row align-items-center gy-5">
+
+                    <!----- columna izquierda ------>
+                    <div class="col-lg-7" entrada>
+                        <p class="estado vidrio">
+                            <span class="punto"></span> Disponible 
+                        </p>
+                        <h1 class="titulo-hero">
+                            Código<br>con<span class="texto-degradado">ciencia</span>
+                        </h1>
+                        <p class="lead texto-suave">
+                            Desarrolladora Java Full Stack. Fisioterapeuta de formación, con interés
+                            en machine learning, neurociencia y, a futuro, tecnología para la salud.
+                        </p>
+
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#proyectos" class="btn btn-fresa rounded-pill px-4 py-3">Ver proyectos</a>
+                            <a href="#contacto" class="btn btn-fresa rounded-pill px-4 py-3">Contacto</a>
+                        </div>
+                    </div>
+
+                    <!------ columna derecha - aqui va mi foto y el adn ------>
+                    <div class="col-lg-5">
+                        <div class="hero-visual">
+                            <!-- imagen del adn -->
+                            <img class="adn" src="src/assets/adn.webp" alt="" aria-hidden="true">
+                            
+                            <!---- mi foto con su marco - guardar foto en webp ----->
+                            <figure class="foto-marco vidrio">
+                                <!-- borrar el div de foto vaica cuando suba la foto -->
+                                <!-- <img class="foto-img" src="assets/img/mi-foto.webp" alt="Retrato de [Tu nombre], desarrolladora Java Full Stack"> -->
+                                <div class="foto-vacia">
+                                    <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" stroke-linecap="rund" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>
+                                </svg>
+                                <strong>Mi foto aqui</strong>
+                                <small>retrato · 4:5</small>
+                                </div>
+                            </figure>
+
+                            <!------- etiqueta de mi foto ------>
+                            <div class="chip-flotante vidrio">Java · Spring Boot · MySQL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MIS SKILLS, BANDA SE MUEVE SOLA -->
+        <section id="habilidades" class="habilidades" aria-label="Habilidades">
+            <div class="container">
+                <p class="etiqueta">| Habilidades</p>
+            </div>
+            <div class="cinta">
+                <div class="cinta-pista">
+                    <ul class="cinta-grupo list-unstyled">
+                        <li class="chip">Java</li>
+                        <li class="chip">Spring Boot</li>
+                        <li class="chip">MySQL</li>
+                        <li class="chip">Javascript</li>
+                        <li class="chip">HTML5 · CSS3</li>
+                        <li class="chip">Bootstrap</li>
+                        <li class="chip">Git · GitHub</li>
+                        <li class="chip chip-oscuro">Liderazgo</li>
+                        <li class="chip chip-oscuro">Organización</li>
+                        <li class="chip chip-oscuro">Trabajo en equipo</li>
+                        <li class="chip chip-azul">ML (aprendiendo)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!----------------- proyectos ----------------------------------->
+        <section id="proyectos" class="section">
+            <div class="container">
+                
+                <div class="d-flex flex-wrap align-items-end justify-content-between gap-4 mb-5">
+                    <div>
+                        <p class="etiqueta">| 01 | Proyectos</p>
+                        <h2 class="titulo-seccion mb-0">Lo que he construido</h2>
+                    </div>
+
+                    <!-- Pestañas de vidrio -->
+                    <div class="filtros vidrio" role="group" aria-label="Filtrar proyectos">
+                        <button type="button" class="filtro activo" data-filtro="todos">Todos</button>
+                        <button type="button" class="filtro" data-filtro="proyectos">Proyectos</button>
+                        <button type="button" class="filtro" data-filtro="hackatones">Hackatones</button>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="lista-proyectos">
+
+                    <!-- tarjeta 1 -->
+                    <div class="col-md-6 col-lg-4" data-categoria="proyectos">
+                        <article class="tarjeta vidrio h-100">
+                            <div class="tarjeta-imagen">
+                                <img src="src/assets/cinta-azul.webp" alt="" aria-hidden="true">
+                            </div>
+                            <div class="tarjeta-cuerpo">
+                                <p class="etiqueta">Proyectos 01</p>
+                                <h3>1001 Labs · CoffeeMod</h3>
+                                <p class="texto-suave">E-commerce de café de especialidad realizado con el equipo 1001 Labs</p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="etiqueta-tec">JavaScript</span>
+                                    <span class="etiqueta-tec">HTML</span>
+                                    <span class="etiqueta-tec">CSS</span>
+                                </div>
+                                <a href="#" class="enlace-flecha">Ver proyecto <span aria-hidden="true">↗</span></a>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- tarjeta 2 -->
+                    <div class="col-md-6 col-lg-4" data-categoria="hackatones">
+                        <article class="tarjeta vidrio h-100">
+                            <div class="tarjeta-imagen">
+                                <img src="src/assets/cinta-rosa.webp" alt="" aria-hidden="true">
+                            </div>
+                            <div class="tarjeta-cuerpo">
+                                <p class="etiqueta">Hackaton</p>
+                                <h3>[Nombre del hackaton]</h3>
+                                <p class="texto-suave">Reto en equipo: de la idea al prototipo en pocas horas</p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="etiqueta-tec">[tecnologia 1]</span>
+                                    <span class="etiqueta-tec">[tecnologia 2]</span>
+                                    <span class="etiqueta-tec">[tecnologia 3]</span>
+                                </div>
+                                <a href="#" class="enlace-flecha">Ver proyecto <span aria-hidden="true">↗</span></a>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- tarjeta 3 -->
+                    <div class="col-md-6 col-lg-4" data-categoria="proyectos">
+                        <article class="tarjeta vidrio h-100">
+                            <div class="tarjeta-imagen">
+                                <img src="src/assets/cinta-azul.webp" alt="" aria-hidden="true">
+                            </div>
+                            <div class="tarjeta-cuerpo">
+                                <p class="etiqueta">Proyectos 02</p>
+                                <h3>Este portafolio</h3>
+                                <p class="texto-suave">Diseño propio con HTML, CSS, JavaScript y Bootstrap, y animaciones sutiles</p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="etiqueta-tec">JavaScript</span>
+                                    <span class="etiqueta-tec">HTML</span>
+                                    <span class="etiqueta-tec">CSS</span>
+                                </div>
+                                <a href="#" class="enlace-flecha">Ver código <span aria-hidden="true">↗</span></a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!------------------ Sobre mi  ---------------------------------------->
+        <section id="sobre-mi" class="section">
+            <div class="container">
+                <p class="etiqueta">| 02 | Sobre mí</p>
+
+                <div class="row align-items-center gy-5">
+                
+                    <div class="col-lg-4 order-2 order-lg-1">
+                        <div class="idea">
+                            <p class="etiqueta">Origen</p>
+                            <h3>Del movimiento al código</h3>
+                            <p class="texto-suave">Vengo de la fisioterapia: aprendí a observar, escuchar y mejorar procesos paso a paso.</p>
+                        </div>
+                        <div class="idea idea-baja">
+                            <p class="etiqueta">Equipo</p>
+                            <h3>Lidero y organizo</h3>
+                            <p class="texto-suave">Me gusta coordinar, mantener todo en orden y sacar el trabajo adelante con otras personas.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 order-1 order-lg-2 text-center">
+                        <img class="cinta-central" src="src/assets/cinta-mixta.webp" alt="" aria-hidden="true">
+                        <p class="frase-central">Ciencia <span class="texto-degradado">+</span> código</p>
+                    </div>
+
+                    <div class="col-lg-4 order-3">
+                        <div class="idea">
+                            <p class="etiqueta">Hoy</p>
+                            <h3>Java + front-end</h3>
+                            <p class="texto-suave">Me atrae el diseño del front y estoy creciendo en el back con Java y Spring Boot.</p>
+                        </div>
+                        <div class="idea idea-baja">
+                            <p class="etiqueta">Mañana</p>
+                            <h3>ML y neurociencia</h3>
+                            <p class="texto-suave">Mi meta: aplicar modelos inteligentes a la salud.</p>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+
+        <!----------- Contacto -------------------------------------------->
+        <section id="contacto" class="seccion pb-5">
+            <div class="container">
+
+                <div class="contacto vidrio">
+                    <p class="etiqueta">| 3 | Contacto</p>
+                    <h2 class="titulo-seccion mb-3">¿Listo para construir<br>algo juntos?</h2>
+                    <p class="texto-suave mb-4">Escríbeme y platicamos. </p>
+                    
+                    <div class="d-flex flex-wrap gap-3 mb-5">
+                        <a href="daniela.98mg@gmail.com" class="btn btn-fresa rounded-pill px-4 py-3">Correo</a>
+                        <a href="https://www.linkedin.com/in/daniela-magana9808/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="btn btn-vidrio rounded-pill px-4 py-3">LinkedIn</a>
+                        <a href="https://github.com/danielamag98" target="_blank" rel="noopener noreferrer" class="btn btn-vidrio rounded-pill px-4 py-3">GitHub</a>
+                    </div>
+
+                    <dl class="datos row g-3 mb-0">
+                        <div class="col-sm-6 col-lg-3"><dt>Correo</dt><dd>daniela.98mg@gmail.com</dd></div>
+                        <div class="col-sm-6 col-lg-3"><dt>WhatsApp</dt><dd>+52 00 0000 0000</dd></div>
+                        <div class="col-sm-6 col-lg-3"><dt>Ubicación</dt><dd>Ciudad de México, México</dd></div>
+                        <div class="col-sm-6 col-lg-3"><dt>GitHub</dt><dd>github.com/danielamg98</dd></div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!---------------pie ------------------------------------------------->
+    <footer class="pie">
+        <div class="container" d-flex flex-wrap justify-content-between gap-2>
+            <span>© <span id="año">2026</span> DANIELA MAGAÑA ARANA</span>
+            <span>Hecho con HTML, CSS, JavaScript y Bootstrap</span>
+        </div>
+    </footer>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="src/js/main.js"></script>
+</body>
 </html>
